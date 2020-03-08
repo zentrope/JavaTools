@@ -4,9 +4,9 @@
 
 Challenge: Make a set of useful tools so that you don't have to include any dependencies in your utility projects, and to make convenience APIs atop complicated Java classes.
 
-** Tools*
+** Tools
 
-- com.zentrope.tools.json.Parser
+- [[src/main/java/com/zentrope/tools/json/][com.zentrope.tools.json.Parser]]
 
 ** Usage
 
