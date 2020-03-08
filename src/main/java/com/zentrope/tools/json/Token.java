@@ -44,9 +44,9 @@ final class Token {
     }
 
     @Override
-    public boolean equals(Object o) {
-        var a = this;
-        var b = (Token) o;
+    public boolean equals(final Object o) {
+        final var a = this;
+        final var b = (Token) o;
         return a.type == b.type && a.value.equals(b.value);
     }
 }

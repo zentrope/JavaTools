@@ -88,7 +88,7 @@ class Tokenizer {
             }
 
             if (isWordEnder(c) && !numAccum.isEmpty()) {
-                var test = numAccum.toLowerCase();
+                final var test = numAccum.toLowerCase();
                 if (test.equals("true") || test.equals("false")) {
                     tokens.add(new Token(test, TokenType.Boolean));
                 } else if (test.equals("null")) {

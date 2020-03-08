@@ -6,7 +6,6 @@ import java.util.Objects;
 final class Parser {
 
     final private List<Token> tokens;
-
     private Integer ptr = 0;
 
     public Parser(final String json) {
@@ -18,9 +17,9 @@ final class Parser {
     }
 
     public JsonArray parseJsonArray() throws ParseException {
-        JsonArray array = new JsonArray();
 
-        Token token = current();
+        var array = new JsonArray();
+        var token = current();
 
         if (Objects.isNull(token)) {
             throw new ParseException("Expected '[' but got null.");
@@ -47,7 +46,6 @@ final class Parser {
                 continue;
             }
 
-            ptr--;
             var element = parseValue();
             array.append(element);
         }
@@ -56,8 +54,8 @@ final class Parser {
 
     public JsonObject parseJsonObject() throws ParseException {
 
-        JsonObject object = new JsonObject();
-        Token token = current();
+        var object = new JsonObject();
+        var token = current();
 
         if (token == null) {
             throw new ParseException("Expected '{', got null.");
@@ -71,7 +69,7 @@ final class Parser {
 
             token = next();
 
-            if (token == null) {
+            if (Objects.isNull(token)) {
                 throw new ParseException("Expected object property or '}', got null.");
             }
 
@@ -85,7 +83,7 @@ final class Parser {
 
             if (token.type == TokenType.String) {
                 var name = token.value;
-                skipColon();
+                skipToken(TokenType.Colon);
                 var value = parseValue();
                 object.setValue(name, value);
             }
@@ -95,7 +93,7 @@ final class Parser {
     }
 
     private Object parseValue() throws ParseException {
-        Token curr = next();
+        var curr = current();
         if (curr == null) {
             var msg = String.format("Expected a value but got a null.");
             throw new ParseException(msg);
@@ -134,8 +132,8 @@ final class Parser {
     }
 
     private Token current() throws ParseException {
-        Token curr = this.tokens.get(this.ptr);
-        if (curr == null) {
+        var curr = this.tokens.get(this.ptr);
+        if (Objects.isNull(curr)) {
             var msg = "Expected a token but got a null.";
             throw new ParseException(msg);
         }
@@ -150,17 +148,9 @@ final class Parser {
         return tokens.get(ptr);
     }
 
-    private void skipColon() throws ParseException {
-        skipToken(TokenType.Colon);
-    }
-
-    // private void skipComma() throws ParseException {
-    //     skipToken(TokenType.Comma);
-    // }
-
     private void skipToken(TokenType type) throws ParseException {
-        Token curr = next();
-        if (curr == null) {
+        var curr = next();
+        if (Objects.isNull(curr)) {
             var msg = String.format("Expected a '%s' but got a null.", type);
             throw new ParseException(msg);
         }
@@ -169,7 +159,6 @@ final class Parser {
             var msg = String.format("Expected a '%s', but got a '%s'.", type, curr);
             throw new ParseException(msg);
         }
+        next();
     }
-
-
 }

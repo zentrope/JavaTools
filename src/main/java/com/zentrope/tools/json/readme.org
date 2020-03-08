@@ -5,14 +5,14 @@ This is a simple JSON parser that doesn't map JSON to actual objects. I use it w
 ** Usage
 
 #+begin_src java
-  // Get some data from somewhere
-  String doc = jsonDocFromRequest();
+  // Get some data from somewhere.
+  String doc = client.get("/user/1");
 
-  // Parse the data:
+  // Parse the data.
   try {
       var user = new Parser(doc).parseJsonObject();
 
-      // Pull out values, you gotta know the type before hand:
+      // Pull out values. You must know the type before hand.
       var name = user.getString("name");
       var title = user.getString("title");
       var rewards = user.getInteger("totalRewards");
@@ -31,8 +31,7 @@ This is a simple JSON parser that doesn't map JSON to actual objects. I use it w
 
 Copyright (c) 2020-present Keith Irwin
 
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either
-version 3 of the License, or (at your option) any later version.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 

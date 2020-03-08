@@ -5,19 +5,19 @@ import java.util.Map;
 
 final class JsonObject {
 
-    private Map<String, Object> properties;
+    private final Map<String, Object> properties;
 
     public JsonObject() {
         this.properties = new HashMap<String, Object>();
     }
 
-    void setValue(String name, Object value) {
+    void setValue(final String name, final Object value) {
         this.properties.put(name, value);
     }
 
     public JsonObject getJsonObject(final String name) {
         if (properties.containsKey(name)) {
-            var object = properties.get(name);
+            final var object = properties.get(name);
             if (object instanceof JsonObject) {
                 return (JsonObject) object;
             }
@@ -25,33 +25,33 @@ final class JsonObject {
         return null;
     }
 
-    public String getString(String name) {
+    public String getString(final String name) {
         if (!properties.containsKey(name)) {
             return null;
         }
-        var object = properties.get(name);
+        final var object = properties.get(name);
         if (object instanceof String) {
             return (String) object;
         }
         return null;
     }
 
-    public Integer getInteger(String name) {
+    public Integer getInteger(final String name) {
         if (!properties.containsKey(name)) {
             return null;
         }
-        var object = properties.get(name);
+        final var object = properties.get(name);
         if (object instanceof Integer) {
             return (Integer) object;
         }
         return null;
     }
 
-    public Boolean getBoolean(String name) {
+    public Boolean getBoolean(final String name) {
         if (!properties.containsKey(name)) {
             return null;
         }
-        var object = properties.get(name);
+        final var object = properties.get(name);
         if (object instanceof Boolean) {
             return (Boolean) object;
         }
@@ -69,7 +69,7 @@ final class JsonObject {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         return o.hashCode() == this.hashCode();
     }
 }

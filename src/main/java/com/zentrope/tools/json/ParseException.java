@@ -8,11 +8,11 @@ final class ParseException extends Exception {
     public ParseException() {
     }
 
-    public ParseException(Exception e) {
+    public ParseException(final Exception e) {
         super(e);
     }
 
-    public ParseException(String message) {
+    public ParseException(final String message) {
         super(message);
     }
 }
