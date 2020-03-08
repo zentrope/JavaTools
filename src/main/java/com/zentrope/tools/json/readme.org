@@ -1,0 +1,39 @@
+* JSON Parser
+
+This is a simple JSON parser that doesn't map JSON to actual objects. I use it when I want to avoid dependencies on third-party libraries and don't want to use Oracle's J2EE Java tech.
+
+** Usage
+
+#+begin_src java
+  // Get some data from somewhere
+  String doc = jsonDocFromRequest();
+
+  // Parse the data:
+  try {
+      var user = new Parser(doc).parseJsonObject();
+
+      // Pull out values, you gotta know the type before hand:
+      var name = user.getString("name");
+      var title = user.getString("title");
+      var rewards = user.getInteger("totalRewards");
+      var isCool = user.getBoolean("isCool");
+      var reports = user.getJsonArray("reports");
+
+      // Do something interesting....
+  }
+
+  catch (ParserException e) {
+      System.err.println("ERROR: " + e);
+  }
+#+end_src
+
+** License
+
+Copyright (c) 2020-present Keith Irwin
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either
+version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program. If not, see [http://www.gnu.org/licenses/](http://www.gnu.org/licenses/).

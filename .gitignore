@@ -1,0 +1,10 @@
+.gradle
+build
+bin
+.DS_Store
+
+# emacs/lsp-java
+bin
+.settings
+.classpath
+.project
