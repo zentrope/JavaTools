@@ -16,8 +16,8 @@
 //
 
 plugins {
-    id 'java'
-    id 'java-library'
+    id "java-library"
+    // https://github.com/radarsh/gradle-test-logger-plugin
     id "com.adarshr.test-logger" version "2.0.0"
 }
 
@@ -26,14 +26,14 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
 }
 
-version = '2020.1'
+version = "2020.1"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.13'
+    testImplementation "junit:junit:4.13"
 }
 
 testlogger {

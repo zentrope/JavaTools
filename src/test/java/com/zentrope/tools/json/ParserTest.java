@@ -15,9 +15,9 @@ public class ParserTest {
 
     @Test
     public void simpleArray() {
-        var doc = "[\"string\", 42, true, \"other-string\"]";
 
         try {
+            var doc = Helpers.jsonFrom("simple-array");
             var expected = new JsonArray();
             expected.append("string");
             expected.append(Integer.valueOf(42));
@@ -37,7 +37,7 @@ public class ParserTest {
             assertEquals(expected, computed);
         }
 
-        catch (ParseException e) {
+        catch (Exception e) {
             System.out.println("ERROR: " + e);
             fail("ERROR: " + e);
         }
@@ -45,10 +45,8 @@ public class ParserTest {
 
     @Test
     public void arrayOfObjects() {
-        var u1 = "{\"name\" : \"anna\", \"title\": \"director\"}";
-        var u2 = "{\"name\" : \"maya\", \"title\": \"manager\"}";
-        var doc = String.format("[%s, %s]", u1, u2);
 
+        var doc = Helpers.jsonFrom("array-of-objects");
         try {
             var computed = new Parser(doc).parseJsonArray();
 
@@ -69,8 +67,7 @@ public class ParserTest {
 
     @Test
     public void arrayOfArrays() {
-        var doc = "[\"a\" , 42, [\"c\", \"d\"], true]";
-
+        var doc = Helpers.jsonFrom("array-with-array");
         var embedded = new JsonArray();
         embedded.append("c");
         embedded.append("d");
@@ -105,8 +102,7 @@ public class ParserTest {
 
     @Test
     public void simpleObject() {
-        var doc = "{\"foo\" : \"bar\", \"isAnswer\" : true, \"size\" : 42 }";
-
+        var doc = Helpers.jsonFrom("simple-object");
         var expected = new JsonObject();
         expected.setValue("foo", "bar");
         expected.setValue("isAnswer", Boolean.TRUE);
@@ -129,7 +125,7 @@ public class ParserTest {
 
     @Test
     public void simpleObjectWithExplicitNull() {
-        var doc = "{\"foo\" : \"bar\", \"optional\": null}";
+        var doc = Helpers.jsonFrom("object-with-null");
         try {
             var expected = new JsonObject();
             expected.setValue("foo", "bar");
@@ -150,8 +146,7 @@ public class ParserTest {
 
     @Test
     public void objectWithObjectProperty() {
-        var doc = "{\"foo\" : \"bar\", \"user\": { \"name\": \"anna\", \"title\": \"director\"}}";
-
+        var doc = Helpers.jsonFrom("object-with-object");
         try {
             var user = new JsonObject();
             user.setValue("name", "anna");

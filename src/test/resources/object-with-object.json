@@ -1,0 +1,7 @@
+{
+  "foo" : "bar",
+  "user": {
+    "name": "anna",
+    "title": "director"
+  }
+}
