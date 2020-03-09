@@ -10,7 +10,7 @@ Challenge: Make a set of useful tools so that you don't have to include any depe
 
 ** Usage
 
-This code is meant to be downloaded and inject into your own source code, not pulled in via a Maven-style dependency facility. The idea is that you pull in all this code, then delete the stuff you don't want.
+This code is meant to be downloaded and injected into your own source code, not pulled in via a Maven-style dependency facility. Pull in what you need, delete the rest.
 
 ** License
 
