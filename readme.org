@@ -1,4 +1,5 @@
 #+description: Readme file for Java Tools project
+#+startup: showall
 
 * Java Tools
 
@@ -6,7 +7,8 @@ Challenge: Make a set of useful tools so that you don't have to include any depe
 
 ** Tools
 
-- [[src/main/java/com/zentrope/tools/json/][com.zentrope.tools.json.Parser]]
+- [[src/main/java/com/zentrope/tools/json/reader/][com.zentrope.tools.json.reader.Parser]]
+- [[src/main/java/com/zentrope/tools/json/writer/][com.zentrope.tools.json.writer.JsonWriter]]
 
 ** Usage
 

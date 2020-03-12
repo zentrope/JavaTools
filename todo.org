@@ -1,0 +1,18 @@
+#+description: Working Notes
+#+startup: showall
+
+* Tasks [0/5]
+- [ ] Refactor json tools into reader and writer packages
+- [ ] Start a JsonWriter class using a builder pattern.
+- [ ] Use functional patterns in JsonWriter's toString methods.
+- [ ] JsonWriter's object should allow adding an array.
+- [ ] Add a readme for JsonWriter.
+- [ ] Rename json Parser to JsonReader.
+
+* JsonWriter Tests [0/6]
+- [ ] Object property name with embedded quote.
+- [ ] Object with string value containing embedded quote.
+- [ ] Object containing a child object.
+- [ ] Array of objects
+- [ ] Array of all the types
+- [ ] Array of arrays
