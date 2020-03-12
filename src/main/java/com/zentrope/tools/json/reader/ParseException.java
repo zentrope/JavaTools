@@ -1,4 +1,4 @@
-package com.zentrope.tools.json;
+package com.zentrope.tools.json.reader;
 
 
 final class ParseException extends Exception {

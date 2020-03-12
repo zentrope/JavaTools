@@ -1,3 +1,5 @@
+#+startup: showall
+
 * JSON Parser
 
 This is a simple JSON parser that doesn't map JSON to actual objects. I use it when I want to avoid dependencies on third-party libraries and don't want to use Oracle's J2EE Java tech.
@@ -5,6 +7,9 @@ This is a simple JSON parser that doesn't map JSON to actual objects. I use it w
 ** Usage
 
 #+begin_src java
+  import com.zentrope.tools.json.reader.Parser;
+  import com.zertrope.tools.json.reader.ParserException;
+
   // Get some data from somewhere.
   String doc = client.get("/user/1");
 

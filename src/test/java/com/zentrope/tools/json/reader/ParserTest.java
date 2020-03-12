@@ -1,4 +1,4 @@
-package com.zentrope.tools.json;
+package com.zentrope.tools.json.reader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
