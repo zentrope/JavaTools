@@ -1,4 +1,4 @@
-package com.zentrope.tools.json.reader;
+package com.zentrope.tools.json;
 
 import static org.junit.Assert.fail;
 
@@ -6,13 +6,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-final class Helpers {
+public final class Helpers {
 
-    static String jsonFrom(final String jsonFileName) {
+    public static String jsonFrom(final String jsonFileName) {
         try {
             final var path = Paths.get("src/test/resources/" + jsonFileName + ".json");
             final var bytes = Files.readAllBytes(path);
-            return new String(bytes);
+            return new String(bytes).trim();
         }
 
         catch (IOException e) {

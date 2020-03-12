@@ -1,7 +1,10 @@
 package com.zentrope.tools.json.reader;
 
+import static com.zentrope.tools.json.Helpers.jsonFrom;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+
+import com.zentrope.tools.json.Helpers;
 
 import org.junit.Test;
 
@@ -17,7 +20,7 @@ public class ParserTest {
     public void simpleArray() {
 
         try {
-            var doc = Helpers.jsonFrom("simple-array");
+            var doc = jsonFrom("simple-array");
             var expected = new JsonArray();
             expected.append("string");
             expected.append(Integer.valueOf(42));
@@ -46,7 +49,7 @@ public class ParserTest {
     @Test
     public void arrayOfObjects() {
 
-        var doc = Helpers.jsonFrom("array-of-objects");
+        var doc = jsonFrom("array-of-objects");
         try {
             var computed = new Parser(doc).parseJsonArray();
 
@@ -67,7 +70,7 @@ public class ParserTest {
 
     @Test
     public void arrayOfArrays() {
-        var doc = Helpers.jsonFrom("array-with-array");
+        var doc = jsonFrom("array-with-array");
         var embedded = new JsonArray();
         embedded.append("c");
         embedded.append("d");
@@ -102,7 +105,7 @@ public class ParserTest {
 
     @Test
     public void simpleObject() {
-        var doc = Helpers.jsonFrom("simple-object");
+        var doc = jsonFrom("simple-object");
         var expected = new JsonObject();
         expected.setValue("foo", "bar");
         expected.setValue("isAnswer", Boolean.TRUE);
@@ -146,7 +149,7 @@ public class ParserTest {
 
     @Test
     public void objectWithObjectProperty() {
-        var doc = Helpers.jsonFrom("object-with-object");
+        var doc = jsonFrom("object-with-object");
         try {
             var user = new JsonObject();
             user.setValue("name", "anna");
