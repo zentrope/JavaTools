@@ -17,11 +17,6 @@ public class TokenizerTest {
     // is that if we provide good JSON, we'll get good tokens back.
 
     @Test
-    public void testTheTestingFramework() {
-        assertEquals("1 should equal 1", "1", "1");
-    }
-
-    @Test
     public void testComplicatedJSON() {
         var testJson = "{ \"pro\\\"perty\" : \"name\", \"foo\": \"bar\", \"secret\":42, \"junk\" : [\"gargle\", 33] }";
 

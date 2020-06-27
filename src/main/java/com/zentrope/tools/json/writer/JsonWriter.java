@@ -1,6 +1,7 @@
 package com.zentrope.tools.json.writer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,34 +15,16 @@ final public class JsonWriter {
         return new JsonObject();
     }
 
-    private static String stringify(Boolean value) {
-        return value ? "true" : "false";
-    }
-
-    private static String stringify(String value) {
-        return String.format("\"%s\"", value);
-    }
-
-    private static String stringify(Integer value) {
-        return value.toString();
+    public static JsonArray array() {
+        return new JsonArray();
     }
 
     private static String stringify(Object value) {
-        if (value == null) {
+        if (value == null)
             return "null";
-        }
 
-        if (value instanceof String) {
-            return stringify((String)value);
-        }
-
-        if (value instanceof Integer) {
-            return stringify((Integer)value);
-        }
-
-        if (value instanceof Boolean) {
-            return stringify((Boolean)value);
-        }
+        if (value instanceof String)
+            return String.format("\"%s\"", (String) value);
 
         return value.toString();
     }
@@ -53,14 +36,30 @@ final public class JsonWriter {
         public JsonArray() {
         }
 
-        public JsonArray append(Object value) {
+        public JsonArray add(boolean value) {
+            return add(Boolean.valueOf(value));
+        }
+
+        public JsonArray add(int value) {
+            return add(Integer.valueOf(value));
+        }
+
+        public JsonArray add(Object value) {
             elements.add(value);
+            return this;
+        }
+
+        public JsonArray add(Object... values) {
+            elements.addAll(Arrays.asList(values));
             return this;
         }
 
         @Override
         public String toString() {
-            return "not-implemented";
+            var entries = new ArrayList<String>();
+            for (Object element: elements)
+                entries.add(stringify(element));
+            return "[ " + String.join(", ", entries) + " ]";
         }
     }
 
@@ -87,17 +86,9 @@ final public class JsonWriter {
         @Override
         public String toString() {
             var entries = new ArrayList<String>();
-            for (String key: root.keySet()) {
-                var jsonKey = stringify(key);
-                var jsonVal = stringify(root.get(key));
-                entries.add(jsonKey + " : " + jsonVal);
-            }
-            var entryString = String.join(", ", entries);
-            var builder = new StringBuilder();
-            builder.append("{ ");
-            builder.append(entryString);
-            builder.append(" }");
-            return builder.toString();
+            for (String key: root.keySet())
+                entries.add(stringify(key) + " : " + stringify(root.get(key)));
+            return "{ " + String.join(", ", entries) + " }";
         }
     }
 }

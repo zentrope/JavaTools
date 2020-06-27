@@ -3,7 +3,7 @@ package com.zentrope.tools.json.reader;
 import java.util.List;
 import java.util.Objects;
 
-final class Parser {
+public final class Parser {
 
     final private List<Token> tokens;
     private Integer ptr = 0;

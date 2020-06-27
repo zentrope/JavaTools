@@ -7,7 +7,6 @@ import org.junit.Test;
 
 public class JsonWriterTest {
 
-
     @Test
     public void SimpleObject() {
         var expected = jsonFrom("writer-simple-object");
@@ -21,10 +20,5 @@ public class JsonWriterTest {
 
         assertEquals(expected.length(), computed.length());
         assertEquals(expected, computed);
-    }
-
-    @Test
-    public void TestJsonWriterTest() {
-        assertEquals(1, 1);
     }
 }
